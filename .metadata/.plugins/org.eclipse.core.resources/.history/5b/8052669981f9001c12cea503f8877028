@@ -1,0 +1,9 @@
+package com.dseliel.crud.service;
+
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.context.TestConfiguration;
+
+@SpringBootTest
+public class AlunoServiceTest {
+
+}

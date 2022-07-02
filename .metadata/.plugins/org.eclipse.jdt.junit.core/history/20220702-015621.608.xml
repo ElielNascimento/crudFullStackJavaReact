@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="AlunoServiceTest" project="crud" tests="1" started="1" failures="0" errors="0" ignored="0">
+  <testsuite name="com.dseliel.crud.service.AlunoServiceTest" time="0.153" displayname="AlunoServiceTest" uniqueid="[engine:junit-jupiter]/[class:com.dseliel.crud.service.AlunoServiceTest]">
+    <testcase name="whenFindAllReturnAnListOfFilmes" classname="com.dseliel.crud.service.AlunoServiceTest" time="0.153" displayname="whenFindAllReturnAnListOfFilmes()" uniqueid="[engine:junit-jupiter]/[class:com.dseliel.crud.service.AlunoServiceTest]/[method:whenFindAllReturnAnListOfFilmes()]"/>
+  </testsuite>
+</testrun>

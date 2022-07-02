@@ -1,0 +1,15 @@
+package com.dseliel.crud.service;
+
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.dseliel.crud.entities.Filme;
+
+@SpringBootTest
+public class AlunoServiceTest {
+	
+	
+	private Filme filmes;
+	
+	private A
+
+}

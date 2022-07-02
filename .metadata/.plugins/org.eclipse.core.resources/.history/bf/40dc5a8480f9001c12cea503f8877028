@@ -1,0 +1,5 @@
+package com.dseliel.crud.repository;
+
+public class AlunoRepository {
+
+}
