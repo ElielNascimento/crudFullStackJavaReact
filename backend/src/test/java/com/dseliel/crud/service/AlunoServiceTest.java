@@ -1,8 +1,11 @@
 package com.dseliel.crud.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.Mockito.times;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -34,6 +37,8 @@ public class AlunoServiceTest {
 	@Mock
 	private Filme filme;
 
+	private Optional<Filme> optionalFilme;
+
 	@BeforeEach
 	void setUp() {
 
@@ -43,18 +48,75 @@ public class AlunoServiceTest {
 	}
 
 	@Test
-	void whenFindAllReturnAnListOfFilmes() {
-
-		Mockito.when(repo.findAll()).thenReturn(List.of(filme, filme));
+	void buscarUmaListaDeFilmes() {
+		Mockito.when(repo.findAll()).thenReturn(List.of(filme));
 
 		List<Filme> response = service.findAll();
 
 		Assertions.assertNotNull(response);
 
-		assertEquals(2, response.size());
-		assertEquals(Filme.class, response.get(0).getClass());
+		Assertions.assertEquals(Filme.class, filme.getClass());
 
-		Assertions.assertEquals(ID, response.get(0).getId());
+		Assertions.assertEquals(ID, filme.getId());
+		Assertions.assertEquals(NOME, filme.getNome());
+		Assertions.assertEquals(TIPO, filme.getTipo());
+
+	}
+
+	@Test
+	void buscarFilmesPeloId() {
+
+		Mockito.when(repo.findById(Mockito.anyLong())).thenReturn(optionalFilme);
+
+		Filme response = service.findById(ID);
+
+		Assertions.assertNotNull(response);
+
+		Assertions.assertEquals(response.getClass(), filme.getClass());
+
+		Assertions.assertEquals(ID, filme.getId());
+		Assertions.assertEquals(NOME, filme.getNome());
+		Assertions.assertEquals(TIPO, filme.getTipo());
+
+	}
+
+	@Test
+	void adicionarFilmeComSucesso() {
+
+		Mockito.when(repo.save(Mockito.any())).thenReturn(filme);
+
+		Filme response = service.adicionar(filme);
+
+		assertNotNull(response);
+
+		assertEquals(response.getClass(), filme.getClass());
+
+		Assertions.assertEquals(ID, filme.getId());
+		Assertions.assertEquals(NOME, filme.getNome());
+		Assertions.assertEquals(TIPO, filme.getTipo());
+
+	}
+
+	@Test
+	void deletarFilmePeloId() {
+		Mockito.when(repo.findById(Mockito.anyLong())).thenReturn(optionalFilme);
+		Mockito.doNothing().when(repo).deleteById(Mockito.anyLong());
+		service.deletar(ID);
+
+		Mockito.verify(repo, times(1)).deleteById(Mockito.anyLong());
+
+	}
+
+	@Test
+	void atualizarFilmeComSucesso() {
+		Mockito.when(repo.save(Mockito.any())).thenReturn(filme);
+		Mockito.when(repo.findById(Mockito.anyLong())).thenReturn(optionalFilme);
+
+		Filme response = service.atualizar(ID, filme);
+
+		assertNotNull(response);
+
+		Assertions.assertEquals(ID, filme.getId());
 		Assertions.assertEquals(NOME, filme.getNome());
 		Assertions.assertEquals(TIPO, filme.getTipo());
 
@@ -62,6 +124,7 @@ public class AlunoServiceTest {
 
 	private void startFilme() {
 		filme = new Filme(ID, NOME, TIPO);
+		optionalFilme = Optional.of(new Filme(ID, NOME, TIPO));
 	}
 
 }

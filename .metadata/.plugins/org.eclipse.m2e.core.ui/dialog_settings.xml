@@ -2,7 +2,7 @@
 <section name="Workbench">
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
-			<item value="C:\projetos\crudFullStack"/>
+			<item value="C:\projetos\crudFullStack\backend"/>
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>

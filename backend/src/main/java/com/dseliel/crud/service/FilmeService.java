@@ -20,4 +20,28 @@ public class FilmeService implements Serializable {
 		return repo.findAll();
 	}
 
+	public Filme findById(Long id) {
+		return repo.findById(id).get();
+	}
+
+	public Filme adicionar(Filme obj) {
+		return repo.save(obj);
+
+	}
+
+	public void deletar(Long id) {
+		repo.deleteById(id);
+	}
+
+	public Filme atualizar(Long id, Filme filme) {
+
+		Filme newFilme = repo.findById(id).get();
+
+		newFilme.setNome(filme.getNome());
+		newFilme.setTipo(filme.getTipo());
+
+		return repo.save(filme);
+
+	}
+
 }
