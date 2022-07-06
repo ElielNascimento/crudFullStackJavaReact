@@ -38,7 +38,7 @@ public class FilmeService implements Serializable {
 		Filme newFilme = repo.findById(id).get();
 
 		newFilme.setNome(filme.getNome());
-		newFilme.setTipo(filme.getTipo());
+		newFilme.setCategoria(filme.getCategoria());
 
 		return repo.save(filme);
 

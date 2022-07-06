@@ -59,7 +59,7 @@ public class AlunoServiceTest {
 
 		Assertions.assertEquals(ID, filme.getId());
 		Assertions.assertEquals(NOME, filme.getNome());
-		Assertions.assertEquals(TIPO, filme.getTipo());
+		Assertions.assertEquals(TIPO, filme.getCategoria());
 
 	}
 
@@ -76,7 +76,7 @@ public class AlunoServiceTest {
 
 		Assertions.assertEquals(ID, filme.getId());
 		Assertions.assertEquals(NOME, filme.getNome());
-		Assertions.assertEquals(TIPO, filme.getTipo());
+		Assertions.assertEquals(TIPO, filme.getCategoria());
 
 	}
 
@@ -93,7 +93,7 @@ public class AlunoServiceTest {
 
 		Assertions.assertEquals(ID, filme.getId());
 		Assertions.assertEquals(NOME, filme.getNome());
-		Assertions.assertEquals(TIPO, filme.getTipo());
+		Assertions.assertEquals(TIPO, filme.getCategoria());
 
 	}
 
@@ -118,7 +118,7 @@ public class AlunoServiceTest {
 
 		Assertions.assertEquals(ID, filme.getId());
 		Assertions.assertEquals(NOME, filme.getNome());
-		Assertions.assertEquals(TIPO, filme.getTipo());
+		Assertions.assertEquals(TIPO, filme.getCategoria());
 
 	}
 

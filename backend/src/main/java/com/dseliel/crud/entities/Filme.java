@@ -18,15 +18,15 @@ public class Filme implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nome;
-	private String tipo;
+	private String categoria;
 
 	public Filme() {
 	}
 
-	public Filme(Long id, String nome, String tipo) {
+	public Filme(Long id, String nome, String categoria) {
 		this.id = id;
 		this.nome = nome;
-		this.tipo = tipo;
+		this.categoria = categoria;
 	}
 
 	public String getNome() {
@@ -37,12 +37,12 @@ public class Filme implements Serializable {
 		this.nome = nome;
 	}
 
-	public String getTipo() {
-		return tipo;
+	public String getCategoria() {
+		return categoria;
 	}
 
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
 	}
 
 	public static long getSerialversionuid() {
