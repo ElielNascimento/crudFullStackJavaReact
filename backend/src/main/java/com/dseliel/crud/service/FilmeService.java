@@ -1,11 +1,15 @@
 package com.dseliel.crud.service;
 
 import java.io.Serializable;
+import java.time.Instant;
+import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.dseliel.crud.dto.FilmeDTO;
 import com.dseliel.crud.entities.Filme;
 import com.dseliel.crud.repository.FilmeRepository;
 
@@ -16,16 +20,24 @@ public class FilmeService implements Serializable {
 	@Autowired
 	public FilmeRepository repo;
 
-	public List<Filme> findAll() {
-		return repo.findAll();
+	public List<FilmeDTO> findAll() {
+		List<Filme> response = repo.findAll();
+		return response.stream().map(x -> new FilmeDTO(x)).collect(Collectors.toList());
+
 	}
 
-	public Filme findById(Long id) {
-		return repo.findById(id).get();
+	public FilmeDTO findById(Long id) {
+		Filme response = repo.findById(id).get();
+		return new FilmeDTO(response);
+
 	}
 
-	public Filme adicionar(Filme obj) {
-		return repo.save(obj);
+	public FilmeDTO adicionar(FilmeDTO obj) {
+
+		Filme filme = new Filme(null, obj.getNome(), obj.getCategoria());
+
+		repo.save(filme);
+		return new FilmeDTO(filme);
 
 	}
 
@@ -33,15 +45,13 @@ public class FilmeService implements Serializable {
 		repo.deleteById(id);
 	}
 
-	public Filme atualizar(Long id, Filme filme) {
-
+	public FilmeDTO atualizar(Long id, FilmeDTO dto) {
 		Filme newFilme = repo.findById(id).get();
+		newFilme.setNome(dto.getNome());
+		newFilme.setCategoria(dto.getCategoria());
 
-		newFilme.setNome(filme.getNome());
-		newFilme.setCategoria(filme.getCategoria());
+		repo.save(newFilme);
 
-		return repo.save(filme);
-
+		return new FilmeDTO(newFilme);
 	}
-
 }
